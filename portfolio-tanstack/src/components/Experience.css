@@ -194,6 +194,20 @@ html[data-theme="retro"] .timeline-item {
   left: 0;
 }
 
+/* Retro Mode Enhancements - subtle, not clipart-y */
+html[data-theme="retro"] .timeline-date {
+  font-family: 'Courier New', monospace;
+}
+
+html[data-theme="retro"] .tag {
+  border-radius: 0;
+}
+
+html[data-theme="retro"] .tag:hover {
+  color: var(--bg-primary);
+  background: var(--accent-primary);
+}
+
 /* Responsive */
 @media (max-width: 968px) {
   .experience {

@@ -1,32 +1,32 @@
-import { useEffect, useState } from 'react'
-import './Hero.css'
+import { useEffect, useState } from "react";
+import "./Hero.css";
 
 export default function Hero() {
-  const [displayText, setDisplayText] = useState('')
-  const fullText = 'Aayush Seth'
+  const [displayText, setDisplayText] = useState("");
+  const fullText = "Aayush Seth";
 
   useEffect(() => {
-    let index = 0
-    const typeSpeed = 100
-    
+    let index = 0;
+    const typeSpeed = 100;
+
     const typeInterval = setInterval(() => {
       if (index < fullText.length) {
-        setDisplayText(fullText.substring(0, index + 1))
-        index++
+        setDisplayText(fullText.substring(0, index + 1));
+        index++;
       } else {
-        clearInterval(typeInterval)
+        clearInterval(typeInterval);
       }
-    }, typeSpeed)
+    }, typeSpeed);
 
-    return () => clearInterval(typeInterval)
-  }, [])
+    return () => clearInterval(typeInterval);
+  }, []);
 
   const scrollToNext = () => {
-    const aboutSection = document.getElementById('about')
+    const aboutSection = document.getElementById("about");
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' })
+      aboutSection.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <section className="hero">
@@ -38,15 +38,17 @@ export default function Hero() {
             <span className="cursor">|</span>
           </span>
         </h1>
-        <p className="hero-subtitle">
-          Software Developer & Creative Problem Solver
-        </p>
+        <p className="hero-subtitle">Developer</p>
         <div className="hero-cta">
           <button onClick={scrollToNext} className="btn btn-primary">
             View my work
           </button>
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+          <button
+            onClick={() =>
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
             className="btn btn-secondary"
           >
             Get in touch
@@ -54,5 +56,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

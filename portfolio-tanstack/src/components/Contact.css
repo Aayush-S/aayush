@@ -1,6 +1,40 @@
 .contact {
   background: var(--bg-secondary);
   padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Retro decoration - pixel torii gate */
+html[data-theme="retro"] .contact::before {
+  content: '';
+  position: absolute;
+  bottom: 40px;
+  left: 5%;
+  width: 80px;
+  height: 60px;
+  opacity: 0.1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 30' shape-rendering='crispEdges'%3E%3Crect x='2' y='4' width='36' height='3' fill='%23c41e3a'/%3E%3Crect x='0' y='2' width='40' height='2' fill='%23c41e3a'/%3E%3Crect x='5' y='7' width='4' height='23' fill='%23c41e3a'/%3E%3Crect x='31' y='7' width='4' height='23' fill='%23c41e3a'/%3E%3Crect x='4' y='12' width='32' height='2' fill='%23c41e3a'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  image-rendering: pixelated;
+}
+
+/* Pixel game controller */
+html[data-theme="retro"] .contact::after {
+  content: '';
+  position: absolute;
+  top: 60px;
+  right: 8%;
+  width: 60px;
+  height: 40px;
+  opacity: 0.08;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 20' shape-rendering='crispEdges'%3E%3Crect x='4' y='4' width='24' height='12' rx='3' fill='%23404040'/%3E%3Crect x='6' y='6' width='20' height='8' rx='2' fill='%23505050'/%3E%3Crect x='8' y='8' width='2' height='4' fill='%23303030'/%3E%3Crect x='7' y='9' width='4' height='2' fill='%23303030'/%3E%3Ccircle cx='22' cy='9' r='1.5' fill='%2300d5ff'/%3E%3Ccircle cx='25' cy='11' r='1.5' fill='%23ff2bd6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  image-rendering: pixelated;
 }
 
 .contact-content {
@@ -9,10 +43,17 @@
 }
 
 .contact-text {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   font-size: 1.125rem;
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+.contact-subtext {
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+  color: var(--text-tertiary);
+  font-style: italic;
 }
 
 .contact-links {
@@ -36,6 +77,45 @@
 .contact-link:hover {
   border-color: var(--accent-primary);
   color: var(--accent-primary);
+}
+
+.contact-footer-note {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.contact-footer-note p {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* Retro Mode Enhancements - subtle */
+html[data-theme="retro"] .contact-subtext {
+  font-family: 'Courier New', monospace;
+  font-style: normal;
+  color: var(--retro-pink);
+}
+
+html[data-theme="retro"] .contact-link:nth-child(1):hover {
+  border-color: var(--retro-cyan);
+  color: var(--retro-cyan);
+}
+
+html[data-theme="retro"] .contact-link:nth-child(2):hover {
+  border-color: var(--retro-pink);
+  color: var(--retro-pink);
+}
+
+html[data-theme="retro"] .contact-link:nth-child(3):hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+html[data-theme="retro"] .contact-footer-note p {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.02em;
 }
 
 /* Responsive */
