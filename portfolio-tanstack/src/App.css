@@ -44,28 +44,38 @@
   --border-hover: #6fa85c;
 }
 
-/* Retro Mode (Y2K-inspired) */
+/* Retro Mode - RPG/Adventure Menu Theme */
 [data-theme="retro"] {
-  --bg-primary: #fbfbff;
-  --bg-secondary: #f2f4ff;
-  --bg-tertiary: #eef1ff;
+  /* Off-white parchment-like backgrounds */
+  --bg-primary: #f8f6f0;
+  --bg-secondary: #f0ede4;
+  --bg-tertiary: #e8e4d8;
 
-  --text-primary: #0b0b1a;
-  --text-secondary: #2a2a44;
-  --text-tertiary: #55557a;
+  /* Dark readable text */
+  --text-primary: #1a1a1a;
+  --text-secondary: #3a3a3a;
+  --text-tertiary: #5a5a5a;
 
-  /* Keep green as the primary accent, add pops as secondary accents */
-  --accent-primary: #0b7a3b;     /* emerald/forest */
-  --accent-secondary: #07562a;
-  --accent-hover: #129a52;
+  /* Primary accent: Forest green (link, selection, main UI) */
+  --accent-primary: #2d6b22;
+  --accent-secondary: #1f4a17;
+  --accent-hover: #3d8b32;
 
-  --border-color: rgba(11, 11, 26, 0.12);
-  --border-hover: rgba(11, 122, 59, 0.8);
-
-  --retro-pink: #ff2bd6;
-  --retro-cyan: #00d5ff;
-  --retro-yellow: #ffd400;
-  --retro-ink: rgba(11, 11, 26, 0.9);
+  /* Secondary accent: Gold/yellow for highlights */
+  --rpg-gold: #d4a824;
+  --rpg-gold-light: #f0c850;
+  
+  /* Tertiary: Muted purple for subtle UI */
+  --rpg-purple: #6b5a8c;
+  
+  /* UI colors */
+  --border-color: #2a2a2a;
+  --border-hover: #1a1a1a;
+  --rpg-shadow: #1a1a1a;
+  
+  /* Menu panel */
+  --rpg-panel-bg: #faf8f2;
+  --rpg-panel-border: #2a2a2a;
 }
 
 html {
@@ -86,58 +96,49 @@ body {
   font-size: 16px;
 }
 
-/* Retro-only global treatment: subtle pattern + slightly “tech” typography */
+/* RPG Menu Theme - Clean parchment background with subtle texture */
 html[data-theme="retro"] body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   letter-spacing: 0.01em;
   background-color: var(--bg-primary);
-  /*
-    Retro background goals:
-    - less noisy behind text-heavy sections
-    - less “tiled wallpaper” feel
-    Approach: layer a few large, offset SVGs + a very subtle grid + scanlines.
-  */
+  /* Subtle parchment texture - clean, not busy */
   background-image:
-    /* Large “90s/Y2K” sticker layer (big, sparse, offsets reduce tiling) */
-    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='980'%20height='760'%20viewBox='0%200%20980%20760'%3E%3Crect%20width='980'%20height='760'%20fill='none'/%3E%3Crect%20x='120'%20y='92'%20width='220'%20height='68'%20rx='10'%20fill='%23ff2bd6'%20fill-opacity='0.05'/%3E%3Crect%20x='682'%20y='138'%20width='240'%20height='84'%20rx='12'%20fill='%2300d5ff'%20fill-opacity='0.05'/%3E%3Crect%20x='510'%20y='520'%20width='320'%20height='92'%20rx='14'%20fill='%23ffd400'%20fill-opacity='0.04'/%3E%3Crect%20x='168'%20y='560'%20width='260'%20height='72'%20rx='12'%20fill='%230b7a3b'%20fill-opacity='0.04'/%3E%3Cpath%20d='M210%20270h560v220H210z'%20fill='none'%20stroke='%230b7a3b'%20stroke-opacity='0.08'%20stroke-width='2'/%3E%3Cpath%20d='M490%20270v220'%20fill='none'%20stroke='%2300d5ff'%20stroke-opacity='0.06'%20stroke-width='2'/%3E%3Ccircle%20cx='84'%20cy='240'%20r='6'%20fill='%2300d5ff'%20fill-opacity='0.12'/%3E%3Ccircle%20cx='920'%20cy='630'%20r='6'%20fill='%23ff2bd6'%20fill-opacity='0.10'/%3E%3Ccircle%20cx='730'%20cy='720'%20r='5'%20fill='%230b7a3b'%20fill-opacity='0.10'/%3E%3Ccircle%20cx='320'%20cy='24'%20r='5'%20fill='%23ffd400'%20fill-opacity='0.10'/%3E%3C/svg%3E"),
-    /* Second large layer (different size/offset) */
-    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1120'%20height='880'%20viewBox='0%200%201120%20880'%3E%3Crect%20width='1120'%20height='880'%20fill='none'/%3E%3Crect%20x='80'%20y='120'%20width='360'%20height='120'%20rx='18'%20fill='%230b0b1a'%20fill-opacity='0.02'/%3E%3Crect%20x='740'%20y='520'%20width='300'%20height='110'%20rx='16'%20fill='%230b0b1a'%20fill-opacity='0.02'/%3E%3Crect%20x='540'%20y='64'%20width='420'%20height='80'%20rx='16'%20fill='%23ff2bd6'%20fill-opacity='0.03'/%3E%3Crect%20x='160'%20y='660'%20width='460'%20height='92'%20rx='18'%20fill='%2300d5ff'%20fill-opacity='0.03'/%3E%3Cpath%20d='M60%20380h1000'%20stroke='%230b0b1a'%20stroke-opacity='0.025'%20stroke-width='2'/%3E%3Cpath%20d='M560%20320c120%20-50%20260%20-20%20360%2060'%20fill='none'%20stroke='%23ffd400'%20stroke-opacity='0.06'%20stroke-width='3'%20stroke-linecap='round'/%3E%3Crect%20x='38'%20y='38'%20width='16'%20height='16'%20fill='%2300d5ff'%20fill-opacity='0.08'/%3E%3Crect%20x='1080'%20y='180'%20width='14'%20height='14'%20fill='%23ff2bd6'%20fill-opacity='0.07'/%3E%3Crect%20x='820'%20y='850'%20width='12'%20height='12'%20fill='%23ffd400'%20fill-opacity='0.06'/%3E%3C/svg%3E"),
-    /* Subtle grid (larger spacing + lower opacity) */
-    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%20viewBox='0%200%20160%20160'%3E%3Crect%20width='160'%20height='160'%20fill='none'/%3E%3Cpath%20d='M0%2040H160M0%2080H160M0%20120H160M40%200V160M80%200V160M120%200V160'%20stroke='%230b0b1a'%20stroke-opacity='0.03'%20stroke-width='1'/%3E%3Ccircle%20cx='18'%20cy='22'%20r='2'%20fill='%2300d5ff'%20fill-opacity='0.10'/%3E%3Ccircle%20cx='146'%20cy='44'%20r='2'%20fill='%23ff2bd6'%20fill-opacity='0.08'/%3E%3Ccircle%20cx='120'%20cy='140'%20r='2'%20fill='%230b7a3b'%20fill-opacity='0.08'/%3E%3Ccircle%20cx='42'%20cy='148'%20r='2'%20fill='%23ffd400'%20fill-opacity='0.08'/%3E%3C/svg%3E"),
-    /* Tiny scanlines (pixel/CRT nod, very low opacity) */
-    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='6'%20height='6'%20viewBox='0%200%206%206'%3E%3Crect%20width='6'%20height='6'%20fill='none'/%3E%3Cpath%20d='M0%202h6'%20stroke='%230b0b1a'%20stroke-opacity='0.025'%20stroke-width='1'/%3E%3C/svg%3E");
-  background-size: 980px 760px, 1120px 880px, 160px 160px, 6px 6px;
-  background-position: 12% 6%, 78% 22%, 0 0, 0 0;
-  background-repeat: repeat, repeat, repeat, repeat;
-  background-attachment: fixed, fixed, fixed, fixed;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='none'/%3E%3Ccircle cx='20' cy='30' r='1' fill='%23000' fill-opacity='0.02'/%3E%3Ccircle cx='70' cy='80' r='1' fill='%23000' fill-opacity='0.02'/%3E%3Ccircle cx='90' cy='20' r='0.5' fill='%23000' fill-opacity='0.015'/%3E%3C/svg%3E");
+  background-size: 100px 100px;
 }
 
-/* Retro web cues (90s): classic link colors + underlines */
+/* RPG: Clean link styling */
 html[data-theme="retro"] a {
-  color: #0000ee;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-html[data-theme="retro"] a:visited {
-  color: #551a8b;
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
 html[data-theme="retro"] a:hover {
-  color: var(--retro-pink);
+  color: var(--accent-hover);
 }
 
-/* Retro: pixel-ish selection + focus */
+/* RPG: Selection uses gold accent */
 html[data-theme="retro"] ::selection {
-  background: var(--retro-cyan);
-  color: var(--retro-ink);
+  background: var(--rpg-gold);
+  color: #1a1a1a;
 }
 
 html[data-theme="retro"] a:focus-visible,
 html[data-theme="retro"] button:focus-visible {
-  outline: 2px dotted var(--retro-pink);
-  outline-offset: 3px;
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Pixel font for UI labels (loaded via Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* RPG UI font class */
+html[data-theme="retro"] .rpg-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .container {

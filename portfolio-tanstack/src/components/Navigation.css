@@ -97,23 +97,71 @@
   color: var(--accent-primary);
 }
 
-html[data-theme="retro"] .theme-toggle {
-  border-color: var(--border-color);
-  box-shadow: 3px 3px 0 var(--retro-ink);
-}
+/* ===========================================
+   RPG MENU THEME - Navigation
+   =========================================== */
 
-html[data-theme="retro"] .theme-toggle:hover {
-  border-color: var(--border-hover);
-  box-shadow: 3px 3px 0 var(--retro-pink);
-}
-
-/* Retro nav: a tiny bit of 90s “UI bevel”, still minimal */
 html[data-theme="retro"] .nav {
-  border-bottom: 2px solid rgba(11, 11, 26, 0.18);
+  background: var(--rpg-panel-bg);
+  border-bottom: 2px solid var(--border-color);
 }
 
 html[data-theme="retro"] .nav.scrolled {
-  box-shadow: 0 2px 0 rgba(11, 11, 26, 0.12);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="retro"] .logo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.85rem;
+  color: var(--rpg-gold);
+}
+
+html[data-theme="retro"] .logo:hover {
+  color: var(--accent-primary);
+}
+
+html[data-theme="retro"] .nav-link {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  transition: color 0.15s ease;
+}
+
+html[data-theme="retro"] .nav-link:hover {
+  color: var(--accent-primary);
+}
+
+html[data-theme="retro"] .theme-toggle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  border: 2px solid var(--border-color);
+  border-radius: 2px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  background: var(--rpg-panel-bg);
+  height: 34px;
+  padding: 0 0.875rem;
+  position: relative;
+  top: 0;
+  transition: all 0.15s ease;
+}
+
+html[data-theme="retro"] .theme-toggle:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 2px 2px 0 var(--accent-primary);
+}
+
+html[data-theme="retro"] .theme-toggle:active {
+  top: 1px;
+  box-shadow: 1px 1px 0 var(--accent-primary);
+}
+
+html[data-theme="retro"] .theme-toggle-label {
+  color: var(--text-tertiary);
+}
+
+html[data-theme="retro"] .theme-toggle-value {
+  color: var(--rpg-gold);
 }
 
 @media (max-width: 640px) {

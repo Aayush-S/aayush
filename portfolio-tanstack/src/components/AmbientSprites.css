@@ -1,0 +1,307 @@
+/* Section sprite container - positioned absolutely within parent section */
+.section-sprites {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sprite {
+  position: absolute;
+  bottom: 24px;
+  width: 36px;
+  height: 36px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: pixelated;
+  opacity: 0.65;
+}
+
+.sprite--flip {
+  transform: scaleX(-1);
+}
+
+/* Slime bounces */
+.sprite--slime {
+  animation: slimeBounce 0.8s ease-in-out infinite;
+}
+
+@keyframes slimeBounce {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1) translateY(0);
+  }
+  25% {
+    transform: scaleY(0.85) scaleX(1.15) translateY(2px);
+  }
+  50% {
+    transform: scaleY(1.1) scaleX(0.9) translateY(-4px);
+  }
+  75% {
+    transform: scaleY(0.95) scaleX(1.05) translateY(1px);
+  }
+}
+
+.sprite--slime.sprite--flip {
+  animation: slimeBounceFlip 0.8s ease-in-out infinite;
+}
+
+@keyframes slimeBounceFlip {
+  0%,
+  100% {
+    transform: scaleX(-1) scaleY(1) translateY(0);
+  }
+  25% {
+    transform: scaleX(-1.15) scaleY(0.85) translateY(2px);
+  }
+  50% {
+    transform: scaleX(-0.9) scaleY(1.1) translateY(-4px);
+  }
+  75% {
+    transform: scaleX(-1.05) scaleY(0.95) translateY(1px);
+  }
+}
+
+/* Fairy floats and glows */
+.sprite--fairy {
+  animation: fairyFloat 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(240, 200, 80, 0.5));
+}
+
+@keyframes fairyFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.sprite--fairy.sprite--flip {
+  animation: fairyFloatFlip 2s ease-in-out infinite;
+}
+
+@keyframes fairyFloatFlip {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-8px) rotate(2deg);
+  }
+}
+
+/* Mushroom sways gently - static */
+.sprite--mushroom {
+  animation: mushroomSway 3s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes mushroomSway {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+/* Bird hops */
+.sprite--bird {
+  animation: birdHop 1.2s ease-in-out infinite;
+}
+
+@keyframes birdHop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-6px);
+  }
+  30% {
+    transform: translateY(0);
+  }
+}
+
+.sprite--bird.sprite--flip {
+  animation: birdHopFlip 1.2s ease-in-out infinite;
+}
+
+@keyframes birdHopFlip {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+  15% {
+    transform: scaleX(-1) translateY(-6px);
+  }
+  30% {
+    transform: scaleX(-1) translateY(0);
+  }
+}
+
+/* Wizard walks with staff bob */
+.sprite--wizard {
+  width: 40px;
+  height: 40px;
+  animation: wizardWalk 0.6s ease-in-out infinite;
+}
+
+@keyframes wizardWalk {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.sprite--wizard.sprite--flip {
+  animation: wizardWalkFlip 0.6s ease-in-out infinite;
+}
+
+@keyframes wizardWalkFlip {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-2px);
+  }
+}
+
+/* Knight marches */
+.sprite--knight {
+  width: 40px;
+  height: 40px;
+  animation: knightMarch 0.5s ease-in-out infinite;
+}
+
+@keyframes knightMarch {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-1px) rotate(1deg);
+  }
+}
+
+.sprite--knight.sprite--flip {
+  animation: knightMarchFlip 0.5s ease-in-out infinite;
+}
+
+@keyframes knightMarchFlip {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: scaleX(-1) translateY(-1px) rotate(-1deg);
+  }
+  75% {
+    transform: scaleX(-1) translateY(-1px) rotate(1deg);
+  }
+}
+
+/* Villagers walk casually */
+.sprite--villager1,
+.sprite--villager2 {
+  width: 36px;
+  height: 36px;
+  animation: villagerWalk 0.7s ease-in-out infinite;
+}
+
+@keyframes villagerWalk {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.sprite--villager1.sprite--flip,
+.sprite--villager2.sprite--flip {
+  animation: villagerWalkFlip 0.7s ease-in-out infinite;
+}
+
+@keyframes villagerWalkFlip {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-2px);
+  }
+}
+
+/* Baby dragon flies and flaps wings */
+.sprite--dragon {
+  width: 44px;
+  height: 44px;
+  animation: dragonFly 0.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(196, 43, 59, 0.4));
+}
+
+@keyframes dragonFly {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+.sprite--dragon.sprite--flip {
+  animation: dragonFlyFlip 0.4s ease-in-out infinite;
+}
+
+@keyframes dragonFlyFlip {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-5px) rotate(2deg);
+  }
+}
+
+/* Wizard spell projectile - subtle pixel style */
+.spell {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #f0c850;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+/* Firework particle - subtle */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+/* Hide on smaller screens for less distraction */
+@media (max-width: 768px) {
+  .section-sprites {
+    display: none;
+  }
+}

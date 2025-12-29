@@ -6,28 +6,17 @@
   padding: 8rem 2rem 4rem;
   position: relative;
   overflow: hidden;
-}
-
-/* Retro decoration - subtle pixel mountain silhouette at bottom */
-html[data-theme="retro"] .hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  opacity: 0.05;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 60' preserveAspectRatio='none' shape-rendering='crispEdges'%3E%3Cpolygon points='0,60 30,30 60,60' fill='%230b7a3b'/%3E%3Cpolygon points='50,60 90,20 130,60' fill='%23129a52'/%3E%3Cpolygon points='100,60 150,10 200,60' fill='%230b7a3b'/%3E%3Cpolygon points='170,60 220,25 270,60' fill='%23129a52'/%3E%3Cpolygon points='240,60 300,15 360,60' fill='%230b7a3b'/%3E%3Cpolygon points='330,60 370,30 400,60' fill='%23129a52'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: 400px 60px;
-  image-rendering: pixelated;
+  z-index: 1;
 }
 
 .hero-content {
   max-width: 800px;
   width: 100%;
+}
+
+/* Default panel (no special styling in light/dark) */
+.hero-panel {
+  padding: 0;
 }
 
 .hero-title {
@@ -49,15 +38,6 @@ html[data-theme="retro"] .hero::after {
 .name {
   display: block;
   color: var(--accent-primary);
-}
-
-/* Retro mode: subtle Y2K “chrome” vibe without gradients */
-html[data-theme="retro"] .name {
-  color: var(--accent-primary);
-  text-shadow:
-    2px 0 0 rgba(0, 213, 255, 0.55),
-    -2px 0 0 rgba(255, 43, 214, 0.45),
-    0 2px 0 rgba(255, 212, 0, 0.25);
 }
 
 .cursor {
@@ -83,12 +63,17 @@ html[data-theme="retro"] .name {
   flex-wrap: wrap;
 }
 
+/* Default button arrow (hidden in light/dark) */
+.btn-arrow {
+  display: none;
+}
+
 .btn {
   padding: 0.875rem 1.75rem;
   font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   cursor: pointer;
   font-family: inherit;
   border: none;
@@ -115,32 +100,124 @@ html[data-theme="retro"] .name {
   color: var(--bg-primary);
 }
 
-/* Retro: “sticker” buttons with neon pops */
+/* ===========================================
+   RPG MENU THEME - Retro Mode
+   =========================================== */
+
+/* Hero panel becomes a dialog box */
+html[data-theme="retro"] .hero-panel {
+  background: var(--rpg-panel-bg);
+  border: 2px solid var(--rpg-panel-border);
+  border-radius: 3px;
+  padding: 3rem;
+  position: relative;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Small decorative corner accents */
+html[data-theme="retro"] .hero-panel::before,
+html[data-theme="retro"] .hero-panel::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--rpg-panel-border);
+}
+
+html[data-theme="retro"] .hero-panel::before {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+html[data-theme="retro"] .hero-panel::after {
+  bottom: 8px;
+  right: 8px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Greeting becomes a label */
+html[data-theme="retro"] .greeting {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.75rem;
+}
+
+/* Name stays readable but with subtle accent */
+html[data-theme="retro"] .name {
+  color: var(--accent-primary);
+  text-shadow: none;
+}
+
+/* Subtitle */
+html[data-theme="retro"] .hero-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--rpg-gold);
+}
+
+/* Show button arrows in retro */
+html[data-theme="retro"] .btn-arrow {
+  display: inline;
+  margin-right: 0.5rem;
+  color: var(--rpg-gold);
+  transition: transform 0.1s ease;
+}
+
+/* RPG-style buttons */
 html[data-theme="retro"] .btn {
-  border-radius: 999px;
-  border: 1px solid var(--retro-ink);
-  box-shadow: 3px 3px 0 var(--retro-ink);
-  letter-spacing: 0.02em;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  padding: 1.125rem 1.75rem;
+  border-radius: 2px;
+  border: 2px solid var(--rpg-panel-border);
+  background: var(--rpg-panel-bg);
+  color: var(--text-primary);
+  box-shadow: 3px 3px 0 var(--rpg-shadow);
+  position: relative;
+  top: 0;
+  letter-spacing: 0.05em;
+}
+
+html[data-theme="retro"] .btn:hover {
+  box-shadow: 3px 3px 0 var(--accent-primary);
+}
+
+/* Press down effect on click */
+html[data-theme="retro"] .btn:active {
+  top: 2px;
+  box-shadow: 1px 1px 0 var(--rpg-shadow);
 }
 
 html[data-theme="retro"] .btn-primary {
-  border-color: var(--retro-ink);
-  box-shadow: 3px 3px 0 var(--retro-cyan);
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-secondary);
 }
 
 html[data-theme="retro"] .btn-primary:hover {
-  box-shadow: 3px 3px 0 var(--retro-pink);
+  background: var(--accent-hover);
+  box-shadow: 3px 3px 0 var(--rpg-gold);
+}
+
+html[data-theme="retro"] .btn-primary .btn-arrow {
+  color: var(--rpg-gold-light);
 }
 
 html[data-theme="retro"] .btn-secondary {
-  border-color: var(--retro-ink);
-  box-shadow: 3px 3px 0 var(--retro-yellow);
+  background: var(--rpg-panel-bg);
 }
 
 html[data-theme="retro"] .btn-secondary:hover {
-  box-shadow: 3px 3px 0 var(--retro-cyan);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
 }
-
 
 /* Responsive */
 @media (max-width: 968px) {
@@ -150,6 +227,10 @@ html[data-theme="retro"] .btn-secondary:hover {
   
   .hero-subtitle {
     font-size: 1.25rem;
+  }
+
+  html[data-theme="retro"] .hero-panel {
+    padding: 2rem;
   }
 }
 
@@ -175,4 +256,16 @@ html[data-theme="retro"] .btn-secondary:hover {
     text-align: center;
   }
 
+  html[data-theme="retro"] .hero-panel {
+    padding: 1.5rem;
+  }
+
+  html[data-theme="retro"] .greeting {
+    font-size: 0.7rem;
+  }
+
+  html[data-theme="retro"] .btn {
+    font-size: 0.65rem;
+    padding: 1rem 1.25rem;
+  }
 }

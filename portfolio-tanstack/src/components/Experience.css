@@ -1,5 +1,8 @@
 .experience {
   padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .timeline {
@@ -17,11 +20,6 @@
   width: 2px;
   background: var(--border-color);
   transition: background 0.3s ease;
-}
-
-.timeline::after {
-  content: '';
-  display: none;
 }
 
 .timeline-item {
@@ -46,6 +44,15 @@
   transition: transform 0.3s ease;
   z-index: 1;
   box-sizing: border-box;
+}
+
+/* Hidden by default */
+.quest-check {
+  display: none;
+}
+
+.quest-level {
+  display: none;
 }
 
 .timeline-item:hover .timeline-marker {
@@ -75,35 +82,6 @@
 
 .timeline-content {
   transition: none;
-}
-
-/* Retro readability: add a “paper” surface behind the timeline text area */
-html[data-theme="retro"] .experience {
-  background: rgba(251, 251, 255, 0.88);
-}
-
-html[data-theme="retro"] .timeline::after {
-  display: block;
-  position: absolute;
-  /* start after the line/markers gutter to keep the timeline visible */
-  left: 18px;
-  right: -12px;
-  top: -14px;
-  bottom: -14px;
-  background: rgba(251, 251, 255, 0.86);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  box-shadow: 6px 6px 0 rgba(11, 11, 26, 0.10);
-  z-index: 0;
-  pointer-events: none;
-}
-
-html[data-theme="retro"] .timeline::before {
-  z-index: 2;
-}
-
-html[data-theme="retro"] .timeline-item {
-  z-index: 3;
 }
 
 .timeline-header {
@@ -142,10 +120,6 @@ html[data-theme="retro"] .timeline-item {
   transition: all 0.3s ease;
 }
 
-.timeline-item:hover .timeline-company {
-  letter-spacing: 0.02em;
-}
-
 .timeline-description {
   color: var(--text-secondary);
   line-height: 1.7;
@@ -167,45 +141,128 @@ html[data-theme="retro"] .timeline-item {
   font-size: 0.8125rem;
   color: var(--text-secondary);
   font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.tag::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--accent-primary);
-  transition: left 0.3s ease;
-  z-index: -1;
+  transition: all 0.2s ease;
 }
 
 .tag:hover {
   border-color: var(--accent-primary);
-  color: var(--bg-primary);
-  transform: translateY(-2px);
+  color: var(--accent-primary);
 }
 
-.tag:hover::before {
-  left: 0;
+/* ===========================================
+   RPG MENU THEME - Quest Log
+   =========================================== */
+
+html[data-theme="retro"] .experience {
+  background: var(--bg-secondary);
 }
 
-/* Retro Mode Enhancements - subtle, not clipart-y */
+/* Show quest levels in retro */
+html[data-theme="retro"] .quest-level {
+  display: inline;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: var(--rpg-gold);
+  margin-right: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Timeline becomes quest progression */
+html[data-theme="retro"] .timeline {
+  padding-left: 40px;
+}
+
+html[data-theme="retro"] .timeline::before {
+  left: 10px;
+  width: 3px;
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+/* Quest checkpoints */
+html[data-theme="retro"] .timeline-marker {
+  width: 24px;
+  height: 24px;
+  left: -40px;
+  top: -2px;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html[data-theme="retro"] .timeline-marker .quest-check {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+html[data-theme="retro"] .timeline-item:hover .timeline-marker {
+  transform: none;
+  border-color: var(--accent-primary);
+  background: var(--rpg-panel-bg);
+}
+
+/* Current quest has special styling */
+html[data-theme="retro"] .timeline-item--current .timeline-marker {
+  border-color: var(--rpg-gold);
+  box-shadow: 0 0 0 2px var(--rpg-gold-light);
+}
+
+html[data-theme="retro"] .timeline-item--current .timeline-marker .quest-check {
+  color: var(--rpg-gold);
+}
+
+/* Timeline content panel */
+html[data-theme="retro"] .timeline-content {
+  background: var(--rpg-panel-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 3px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+html[data-theme="retro"] .timeline-item:hover .timeline-content {
+  border-color: var(--accent-primary);
+  box-shadow: 4px 4px 0 var(--accent-primary);
+}
+
+html[data-theme="retro"] .timeline-item--current .timeline-content {
+  border-color: var(--rpg-gold);
+}
+
+/* Timeline date in pixel font */
 html[data-theme="retro"] .timeline-date {
-  font-family: 'Courier New', monospace;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
 }
 
+/* Tags become ability badges */
 html[data-theme="retro"] .tag {
-  border-radius: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  padding: 0.6rem 0.875rem;
+  border: 2px solid var(--border-color);
+  border-radius: 2px;
+  background: var(--bg-tertiary);
+  letter-spacing: 0.05em;
 }
 
 html[data-theme="retro"] .tag:hover {
-  color: var(--bg-primary);
+  border-color: var(--accent-primary);
   background: var(--accent-primary);
+  color: #fff;
+}
+
+/* Hide the hover line effect in retro */
+html[data-theme="retro"] .timeline-item::before {
+  display: none;
 }
 
 /* Responsive */
@@ -236,9 +293,14 @@ html[data-theme="retro"] .tag:hover {
     left: -22px;
   }
 
-  html[data-theme="retro"] .timeline::after {
-    left: 16px;
-    right: -10px;
+  html[data-theme="retro"] .timeline {
+    padding-left: 36px;
+  }
+
+  html[data-theme="retro"] .timeline-marker {
+    left: -36px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -249,5 +311,15 @@ html[data-theme="retro"] .tag:hover {
   
   .timeline-item {
     margin-bottom: 3rem;
+  }
+
+  html[data-theme="retro"] .quest-level {
+    display: block;
+    margin-bottom: 0.25rem;
+    margin-right: 0;
+  }
+
+  html[data-theme="retro"] .timeline-content {
+    padding: 1rem;
   }
 }

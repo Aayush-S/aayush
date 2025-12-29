@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import './Experience.css'
+import { SectionSprites, experienceSprites } from './AmbientSprites'
 
 interface ExperienceItem {
   title: string
@@ -6,18 +8,32 @@ interface ExperienceItem {
   date: string
   description: string
   tags: string[]
+  level: number
+  current?: boolean
 }
 
 export default function Experience() {
+  const [isRetro, setIsRetro] = useState(false)
+
+  useEffect(() => {
+    const checkTheme = () => setIsRetro(document.documentElement.getAttribute('data-theme') === 'retro')
+    checkTheme()
+    const observer = new MutationObserver(checkTheme)
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+    return () => observer.disconnect()
+  }, [])
   const experiences: ExperienceItem[] = [
     {
+      level: 3,
       title: 'Senior Software Engineer',
       company: 'Your Company Name',
       date: '2022 - Present',
       description: 'Led the development of innovative solutions that improved system performance by 40%. Collaborated with cross-functional teams to deliver high-quality products on schedule.',
-      tags: ['React', 'Node.js', 'TanStack', 'AWS']
+      tags: ['React', 'Node.js', 'TanStack', 'AWS'],
+      current: true
     },
     {
+      level: 2,
       title: 'Software Developer',
       company: 'Previous Company',
       date: '2020 - 2022',
@@ -25,6 +41,7 @@ export default function Experience() {
       tags: ['Python', 'Django', 'PostgreSQL']
     },
     {
+      level: 1,
       title: 'Junior Developer',
       company: 'First Company',
       date: '2018 - 2020',
@@ -35,23 +52,29 @@ export default function Experience() {
 
   return (
     <section id="experience" className="experience">
+      {isRetro && <SectionSprites sprites={experienceSprites} />}
       <div className="container">
         <div className="section-header">
           <span className="section-tag">02 / Experience</span>
-          <h2 className="section-title">Where I've Worked</h2>
+          <h2 className="section-title">Quest Log</h2>
         </div>
         
         <div className="timeline">
           {experiences.map((exp, index) => (
             <div 
               key={index} 
-              className="timeline-item"
+              className={`timeline-item ${exp.current ? 'timeline-item--current' : ''}`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="timeline-marker"></div>
+              <div className="timeline-marker">
+                <span className="quest-check">✓</span>
+              </div>
               <div className="timeline-content">
                 <div className="timeline-header">
-                  <h3 className="timeline-title">{exp.title}</h3>
+                  <h3 className="timeline-title">
+                    <span className="quest-level">LV{exp.level.toString().padStart(2, '0')}</span>
+                    {exp.title}
+                  </h3>
                   <span className="timeline-date">{exp.date}</span>
                 </div>
                 <p className="timeline-company">{exp.company}</p>

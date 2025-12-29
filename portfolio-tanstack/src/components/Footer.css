@@ -21,3 +21,19 @@
 .footer-link:hover {
   color: var(--accent-hover);
 }
+
+/* ===========================================
+   RPG MENU THEME - Footer
+   =========================================== */
+
+html[data-theme="retro"] .footer {
+  background: var(--rpg-panel-bg);
+  border-top: 2px solid var(--border-color);
+}
+
+html[data-theme="retro"] .footer p {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
