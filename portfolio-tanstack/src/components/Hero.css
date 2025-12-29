@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 8rem 2rem 4rem;
+  position: relative;
 }
 
 .hero-content {
@@ -30,6 +31,15 @@
 .name {
   display: block;
   color: var(--accent-primary);
+}
+
+/* Retro mode: subtle Y2K “chrome” vibe without gradients */
+html[data-theme="retro"] .name {
+  color: var(--accent-primary);
+  text-shadow:
+    2px 0 0 rgba(0, 213, 255, 0.55),
+    -2px 0 0 rgba(255, 43, 214, 0.45),
+    0 2px 0 rgba(255, 212, 0, 0.25);
 }
 
 .cursor {
@@ -87,6 +97,76 @@
   color: var(--bg-primary);
 }
 
+/* Retro: “sticker” buttons with neon pops */
+html[data-theme="retro"] .btn {
+  border-radius: 999px;
+  border: 1px solid var(--retro-ink);
+  box-shadow: 3px 3px 0 var(--retro-ink);
+  letter-spacing: 0.02em;
+}
+
+html[data-theme="retro"] .btn-primary {
+  border-color: var(--retro-ink);
+  box-shadow: 3px 3px 0 var(--retro-cyan);
+}
+
+html[data-theme="retro"] .btn-primary:hover {
+  box-shadow: 3px 3px 0 var(--retro-pink);
+}
+
+html[data-theme="retro"] .btn-secondary {
+  border-color: var(--retro-ink);
+  box-shadow: 3px 3px 0 var(--retro-yellow);
+}
+
+html[data-theme="retro"] .btn-secondary:hover {
+  box-shadow: 3px 3px 0 var(--retro-cyan);
+}
+
+/* Retro tennis accent (decorative) - hidden because interactive version is used */
+html[data-theme="retro"] .hero::after {
+  display: none;
+  content: '';
+  position: absolute;
+  right: 6%;
+  top: 22%;
+  width: 56px;
+  height: 56px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Pixel tennis ball (8-bit, shaded). SVG uses crisp edges and scales cleanly. */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20shape-rendering='crispEdges'%3E%3Crect%20width='32'%20height='32'%20fill='none'/%3E%3C!--%20palette%20notes%3A%20base%3D%23caff3a%2C%20mid%3D%2396cf35%2C%20shadow%3D%2367a92f%2C%20highlight%3D%23e7ff88%2C%20rim%3D%230b0b1a%20--%3E%3C!--%20rim%20--%3E%3Crect%20x='12'%20y='2'%20width='8'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.18'/%3E%3Crect%20x='9'%20y='3'%20width='14'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.18'/%3E%3Crect%20x='7'%20y='4'%20width='18'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.18'/%3E%3Crect%20x='6'%20y='5'%20width='20'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.16'/%3E%3Crect%20x='5'%20y='6'%20width='22'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.14'/%3E%3Crect%20x='5'%20y='7'%20width='22'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.12'/%3E%3Crect%20x='4'%20y='8'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.10'/%3E%3Crect%20x='4'%20y='9'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.08'/%3E%3Crect%20x='4'%20y='10'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='11'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='12'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='13'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='14'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='15'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='16'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='17'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='18'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='19'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='20'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='21'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.06'/%3E%3Crect%20x='4'%20y='22'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.08'/%3E%3Crect%20x='4'%20y='23'%20width='24'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.10'/%3E%3Crect%20x='5'%20y='24'%20width='22'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.12'/%3E%3Crect%20x='5'%20y='25'%20width='22'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.14'/%3E%3Crect%20x='6'%20y='26'%20width='20'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.16'/%3E%3Crect%20x='7'%20y='27'%20width='18'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.18'/%3E%3Crect%20x='9'%20y='28'%20width='14'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.18'/%3E%3Crect%20x='12'%20y='29'%20width='8'%20height='1'%20fill='%230b0b1a'%20fill-opacity='0.18'/%3E%3C!--%20base%20fill%20--%3E%3Crect%20x='12'%20y='3'%20width='8'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='9'%20y='4'%20width='14'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='7'%20y='5'%20width='18'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='6'%20y='6'%20width='20'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='6'%20y='7'%20width='20'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='8'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='9'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='10'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='11'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='12'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='13'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='14'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='15'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='16'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='17'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='18'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='19'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='20'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='21'%20width='22'%20height='1'%20fill='%23caff3a'/%3E%3Crect%20x='5'%20y='22'%20width='22'%20height='1'%20fill='%2396cf35'/%3E%3Crect%20x='6'%20y='23'%20width='20'%20height='1'%20fill='%2396cf35'/%3E%3Crect%20x='6'%20y='24'%20width='20'%20height='1'%20fill='%2396cf35'/%3E%3Crect%20x='7'%20y='25'%20width='18'%20height='1'%20fill='%2367a92f'/%3E%3Crect%20x='9'%20y='26'%20width='14'%20height='1'%20fill='%2367a92f'/%3E%3Crect%20x='12'%20y='27'%20width='8'%20height='1'%20fill='%2367a92f'/%3E%3C!--%20highlight%20--%3E%3Crect%20x='10'%20y='6'%20width='6'%20height='2'%20fill='%23e7ff88'/%3E%3Crect%20x='9'%20y='8'%20width='3'%20height='1'%20fill='%23e7ff88'/%3E%3Crect%20x='8'%20y='9'%20width='2'%20height='1'%20fill='%23e7ff88'/%3E%3C!--%20seam%20(white)%20--%3E%3Crect%20x='9'%20y='14'%20width='1'%20height='8'%20fill='%23ffffff'/%3E%3Crect%20x='22'%20y='10'%20width='1'%20height='10'%20fill='%23dff7ff'/%3E%3Crect%20x='10'%20y='15'%20width='4'%20height='1'%20fill='%23ffffff'/%3E%3Crect%20x='14'%20y='20'%20width='5'%20height='1'%20fill='%23ffffff'/%3E%3Crect%20x='18'%20y='21'%20width='3'%20height='1'%20fill='%23dff7ff'/%3E%3Crect%20x='20'%20y='12'%20width='2'%20height='1'%20fill='%23dff7ff'/%3E%3C/svg%3E");
+  transform-origin: center;
+  animation: tennisFloat 3.2s ease-in-out infinite;
+  filter: drop-shadow(6px 6px 0 rgba(11, 11, 26, 0.25));
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+
+/* Pixel tennis racket (decorative) - hidden because interactive version is used */
+html[data-theme="retro"] .hero::before {
+  display: none;
+  content: '';
+  position: absolute;
+  left: 6%;
+  top: 34%;
+  width: 72px;
+  height: 72px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Pixel tennis racket (8-bit). Larger, more clearly a racket vs magnifying glass. */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20shape-rendering='crispEdges'%3E%3Crect%20width='32'%20height='32'%20fill='none'/%3E%3C!--%20head%20outline%20--%3E%3Crect%20x='12'%20y='2'%20width='8'%20height='1'%20fill='%230b0b1a'/%3E%3Crect%20x='10'%20y='3'%20width='2'%20height='1'%20fill='%230b0b1a'/%3E%3Crect%20x='20'%20y='3'%20width='2'%20height='1'%20fill='%230b0b1a'/%3E%3Crect%20x='9'%20y='4'%20width='1'%20height='10'%20fill='%230b0b1a'/%3E%3Crect%20x='22'%20y='4'%20width='1'%20height='10'%20fill='%230b0b1a'/%3E%3Crect%20x='10'%20y='14'%20width='2'%20height='1'%20fill='%230b0b1a'/%3E%3Crect%20x='20'%20y='14'%20width='2'%20height='1'%20fill='%230b0b1a'/%3E%3Crect%20x='12'%20y='15'%20width='8'%20height='1'%20fill='%230b0b1a'/%3E%3C!--%20head%20fill%20(blue-ish)%20--%3E%3Crect%20x='12'%20y='3'%20width='8'%20height='12'%20fill='%2300d5ff'%20fill-opacity='0.16'/%3E%3Crect%20x='10'%20y='4'%20width='2'%20height='10'%20fill='%2300d5ff'%20fill-opacity='0.16'/%3E%3Crect%20x='20'%20y='4'%20width='2'%20height='10'%20fill='%2300d5ff'%20fill-opacity='0.16'/%3E%3C!--%20rim%20color%20pixels%20--%3E%3Crect%20x='12'%20y='2'%20width='8'%20height='1'%20fill='%2300d5ff'%20fill-opacity='0.35'/%3E%3Crect%20x='10'%20y='3'%20width='2'%20height='1'%20fill='%2300d5ff'%20fill-opacity='0.35'/%3E%3Crect%20x='20'%20y='3'%20width='2'%20height='1'%20fill='%2300d5ff'%20fill-opacity='0.35'/%3E%3C!--%20strings%20--%3E%3Crect%20x='13'%20y='4'%20width='1'%20height='10'%20fill='%23ffffff'%20fill-opacity='0.55'/%3E%3Crect%20x='16'%20y='4'%20width='1'%20height='10'%20fill='%23ffffff'%20fill-opacity='0.55'/%3E%3Crect%20x='19'%20y='4'%20width='1'%20height='10'%20fill='%23ffffff'%20fill-opacity='0.55'/%3E%3Crect%20x='11'%20y='6'%20width='10'%20height='1'%20fill='%23ffffff'%20fill-opacity='0.38'/%3E%3Crect%20x='11'%20y='9'%20width='10'%20height='1'%20fill='%23ffffff'%20fill-opacity='0.38'/%3E%3Crect%20x='11'%20y='12'%20width='10'%20height='1'%20fill='%23ffffff'%20fill-opacity='0.38'/%3E%3C!--%20throat%20--%3E%3Crect%20x='14'%20y='16'%20width='4'%20height='2'%20fill='%230b0b1a'/%3E%3Crect%20x='13'%20y='18'%20width='6'%20height='1'%20fill='%230b0b1a'/%3E%3C!--%20handle%20(longer)%20--%3E%3Crect%20x='13'%20y='19'%20width='6'%20height='10'%20fill='%230b0b1a'%20fill-opacity='0.85'/%3E%3Crect%20x='14'%20y='20'%20width='4'%20height='8'%20fill='%23ff2bd6'%20fill-opacity='0.18'/%3E%3Crect%20x='13'%20y='29'%20width='6'%20height='1'%20fill='%230b0b1a'/%3E%3Crect%20x='13'%20y='30'%20width='6'%20height='1'%20fill='%230b0b1a'/%3E%3C!--%20cap%20--%3E%3Crect%20x='14'%20y='31'%20width='4'%20height='1'%20fill='%230b0b1a'/%3E%3C/svg%3E");
+  transform: rotate(10deg);
+  filter: drop-shadow(6px 6px 0 rgba(11, 11, 26, 0.18));
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+
+@keyframes tennisFloat {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-10px) rotate(6deg); }
+}
+
 /* Responsive */
 @media (max-width: 968px) {
   .hero-title {
@@ -118,5 +198,13 @@
   .btn {
     width: 100%;
     text-align: center;
+  }
+
+  html[data-theme="retro"] .hero::after {
+    display: none;
+  }
+
+  html[data-theme="retro"] .hero::before {
+    display: none;
   }
 }
